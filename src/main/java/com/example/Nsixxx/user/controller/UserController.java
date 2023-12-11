@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 public class UserController {
   @PostMapping("/login")
   public ResponseEntity<ResponseData<BooleanResponse>> login(HttpServletRequest response) {
+    int a = 0;
     return new ResponseEntity<>(new ResponseData<>("로그인 완료",null),HttpStatus.OK);
   }
 }
