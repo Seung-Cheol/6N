@@ -54,8 +54,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ Secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ Secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
+        run: | 
+          aws s3 cp \ 
           --region ap-northeast-2 \
           --acl private \
           ./springboot-intro-build.zip s3://springboot-intro-build/
