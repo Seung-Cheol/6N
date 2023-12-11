@@ -57,4 +57,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ap-northeast-2
         run: |  
-          aws s3 cp ./springboot-intro-build.zip s3://springboot-intro-build/ \
+          aws s3 cp ./springboot-intro-build.zip s3://springboot-intro-build/ --acl private
