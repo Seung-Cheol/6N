@@ -63,4 +63,4 @@ jobs:
             --application-name springbootburket \
             --ignore-hidden-files \
             --s3-location s3://springbootburket/springbootburket.zip \
-            --source ./
+            --source ../
