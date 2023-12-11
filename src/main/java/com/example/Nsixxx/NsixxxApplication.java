@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NsixxxApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NsixxxApplication.class, args);
+		SpringApplication.run(NsixxxApplication.class, args
+		);
 	}
-
 }
