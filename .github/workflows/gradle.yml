@@ -13,12 +13,18 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  AWS_REGION: ap-northeast-2
+  S3_BUCKET_NAME: springbootburket
+  CODE_DEPLOY_APPLICATION_NAME: my-codedeploy-app
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: my-codedeploy-deployment-group
+
 permissions:
   contents: read
 
 jobs:
   build:
-
+    name: deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -34,8 +40,12 @@ jobs:
         run: chmod +x gradlew
 
       # Build
+      # (3) Gradle build (Test 제외)
       - name: Build with Gradle
-        run: ./gradlew clean build
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: clean build -x test
+
 
       # 전송할 파일을 담을 디렉토리 생성
       - name: Make Directory for deliver
@@ -62,5 +72,5 @@ jobs:
           aws deploy push \
             --application-name springbootburket \
             --ignore-hidden-files \
-            --s3-location s3://springbootburket/springbootburket.zip \
-            --source ../
+            --s3-location s3://$S3_BUCKET_NAME/springbootburket.zip \
+            --source .
